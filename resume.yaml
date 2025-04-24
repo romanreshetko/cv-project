@@ -8,7 +8,7 @@ summary: “summary about user”
 about: “user description”
 contact:
   email: "address@gmail.com" 
-  tel: "+9999999999"
+  tel: "+999999999"
   social: 
     - name: "social-1" 
       url: "social-1-link" 
