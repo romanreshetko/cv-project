@@ -40,6 +40,9 @@ jobs:
             -F "file=@./resume.yaml" \
             --output resume.zip
 
+    - name: Debug workspace
+      run: ls -la
+
     - name: Upload result.zip
       uses: actions/upload-artifact@v4.6.2
       with:
