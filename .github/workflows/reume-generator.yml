@@ -40,14 +40,11 @@ jobs:
             -F "file=@./resume.yaml" \
             --output resume.zip
 
-    - name: Debug workspace
-      run: ls -la
-
-    - name: Upload result.zip
+    - name: Upload resume.zip
       uses: actions/upload-artifact@v4.6.2
       with:
         name: resume-archive
-        path: result.zip
+        path: resume.zip
 
     - name: Shutdown containers
       if: always()
