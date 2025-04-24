@@ -22,16 +22,23 @@ jobs:
 
     - name: Validate resume.yaml
       run: |
-          curl --fail --show-error -X POST http://localhost:8081/validate \
-            -H "Content-Type: application/x-yaml" \
-            --data-binary "@resume.yaml"
+          echo "Validating resume..."
+          RESPONSE_CODE=$(curl -s -o validate_output.txt -w "%{http_code}" \
+            -X POST http://localhost:8081/validate \
+            -F "file=@./resume.yaml")
+
+          if [ "$RESPONSE_CODE" -ne 200 ]; then
+            echo "Validation failed with status code $RESPONSE_CODE"
+            cat validate_output.txt
+            exit 1
+          fi
 
     - name: Generate resume
       run: |
+          echo "Generating resume..."
           curl -X POST http://localhost:3000/generate \
-            -H "Content-Type: application/x-yaml" \
-            --data-binary "@resume.yaml" \
-            -o result.zip
+            -F "file=@./resume.yaml" \
+            --output resume.zip
 
     - name: Upload result.zip
       uses: actions/upload-artifact@v4.6.2
