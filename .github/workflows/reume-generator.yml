@@ -1,0 +1,44 @@
+name: Resume Generator Pipeline
+
+on:
+  push:
+    paths:
+    - resume.yaml
+    - .github/workflows/resume-generator.yml
+
+jobs:
+  generate-resume:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    
+    - name: Set up Docker Compose
+      run: docker compose up -d --build cv-generator cv-file-validate
+
+    - name: Wait for services to start
+      run: sleep 10
+
+    - name: Validate resume.yaml
+      run: |
+          curl --fail --show-error -X POST http://localhost:8081/validate \
+            -H "Content-Type: application/x-yaml" \
+            --data-binary "@resume.yaml"
+
+    - name: Generate resume
+      run: |
+          curl -X POST http://localhost:3000/generate \
+            -H "Content-Type: application/x-yaml" \
+            --data-binary "@resume.yaml" \
+            -o result.zip
+
+    - name: Upload result.zip
+      uses: actions/upload-artifact@v3
+      with:
+        name: resume-archive
+        path: result.zip
+
+    - name: Shutdown containers
+      if: always()
+      run: docker compose down
