@@ -1,0 +1,73 @@
+name: Name Surname
+initials: NS
+location: "Moscow, Russia"
+locationLink: "https://www.google.com/maps/place/Moscow" 
+avatarUrl: "link-to-avatar"
+personalWebsiteUrl: "link-to-site" 
+summary: “summary about user”
+about: “user description”
+contact:
+  email: "address@gmail.com" 
+  tel: "+9999999999"
+  social: 
+    - name: "social-1" 
+      url: "social-1-link" 
+    - name: "social-2"
+      url: "social-2-link"
+
+education:
+  - school: "school-name"
+    degree: "education degree"
+    start: "2020"
+    end: "2024"
+
+work:
+  - company: "Company name"
+    link: "link-to-company"
+    badges: []
+    title: "Director"
+    start: "2020"
+    end: "Present"
+    description: “Description of work”
+
+  - company: "Other company"
+    link: ""
+    badges: []
+    title: "Developer"
+    start: "2016"
+    end: "2020"
+    description: “Description of work”
+
+skills:
+  - Skill 1
+  - Skill 2
+  - Skill 3
+  - Skill 4
+  - Skill 5
+
+projects:
+  - title: "Project title"
+    link:
+      label: "site"
+      href: "link-to-project"
+    techStack:
+      - Tech 1
+      - Tech 2
+      - Tech 3
+    description: “Project description”
+
+  - title: "Other project"
+    link:
+      label: "site"
+      href: "link-to-site"
+    techStack:
+      - Tech 1
+      - Tech 2
+      - Tech 3
+      - Tech 4
+    description: “Description of project”
+
+hobbies:
+  - Hobby 1
+  - Hobby 2
+  - Hobby 3
