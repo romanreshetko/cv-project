@@ -5,6 +5,7 @@ import SignUp from './components/SignUp'
 import LogIn from './components/LogIn'
 import FileUpload from './components/FileUpload'
 import Protected from './components/Protected'
+import HhUpload from './components/hhUpload'
 
 function App() {
   
