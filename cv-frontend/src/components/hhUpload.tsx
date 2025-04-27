@@ -15,7 +15,7 @@ const HhUpload = () => {
 
     return (
         <div>
-            ${result}
+            {result}
         </div>
     )
 }
