@@ -16,6 +16,7 @@ function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/log-in" element={<LogIn />} />
           <Route path="/upload" element={<Protected><FileUpload /></Protected>} />
+          <Route path="/upload-hh" element={<Protected><HhUpload /></Protected>} />
         </Routes>
      </BrowserRouter>
   )
