@@ -12,6 +12,7 @@ services:
       - cv-generator
       - cv-auth-backend
       - cv-file-validate
+      - cv-hh-service
 
   cv-frontend:
     build:
@@ -22,6 +23,7 @@ services:
       - cv-generator
       - cv-file-validate
       - cv-auth-backend
+      - cv-hh-service
     
   cv-generator:
     build:
@@ -34,6 +36,12 @@ services:
       context: ./cv-file-validate
     ports:
       - "8081:8081"
+
+  cv-hh-service:
+    build:
+      context: ./cv-hh-service
+    ports:
+      - "8082:8082"
     
   cv-auth-backend:
     build:
