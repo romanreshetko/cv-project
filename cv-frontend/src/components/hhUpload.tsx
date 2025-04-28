@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 const HhUpload = () => {
     const [token, setToken] = useState('');
     const [message, setMessage] = useState('');
-    useEffect(async () => {
+    useEffect(() => {
         const queryParams = new URLSearchParams(window.location.search);
         const code = queryParams.get('code');
 
