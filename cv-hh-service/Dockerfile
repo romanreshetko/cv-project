@@ -1,15 +1,11 @@
-FROM golang:1.20 AS builder
+FROM golang:1.23 AS builder
 
 WORKDIR /app
+COPY go.mod go.sum ./
+RUN go mod download
 COPY . .
 
-RUN go mod tidy
-RUN go build -o app
-
-FROM alpine:latest
-
-WORKDIR /root/
-COPY --from=builder /app/app .
+RUN go build -o hh-service
 
 EXPOSE 8082
-CMD ["./app"]
+CMD ["./hh-service"]
