@@ -1,12 +1,9 @@
 import { Box, Button, Typography } from "@mui/material";
 import { ChangeEvent, useEffect, useState } from "react"
-import { useSetAtom } from 'jotai';
-import { fileAtom } from '../atoms/hh';
 
 const FileUpload = () => {
     const clientId = 'G69FEKNJM1JRUBA0G48L8TAFRJBEO4E0DJIR3B4Q87FN87GU1NGA67BO8SJJE8D2';
     const redirectUrl = encodeURIComponent('https://husky-notable-jackal.ngrok-free.app/hh-upload');
-    const setFile = useSetAtom(fileAtom);
 
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [uploading, setUploading] = useState(false);
@@ -14,7 +11,7 @@ const FileUpload = () => {
     const [successMessage, setSuccessMessage] = useState('');
     const [enableHH, setEnableHH] = useState(false);
 
-    const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
             const fileName = file.name.toLowerCase();
@@ -69,7 +66,7 @@ const FileUpload = () => {
                     window.URL.revokeObjectURL(url);
 
                     setEnableHH(true);
-                    setFile(selectedFile);
+                    localStorage.setItem("uploadedFileContent", await selectedFile.text());
                     setSuccessMessage("Resume generated and downloaded.");
                 } else {
                     setSuccessMessage("");

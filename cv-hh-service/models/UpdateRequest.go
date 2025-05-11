@@ -1,12 +1,12 @@
 package models
 
 type WorkExperience struct {
-	Company     string `yaml:"company"`
-	CompanyUrl  string `yaml:"company_url"`
-	Position    string `yaml:"position"`
-	Start       string `yaml:"start"`
-	End         string `yaml:"end"`
-	Description string `yaml:"description"`
+	Company     string `json:"company"`
+	CompanyUrl  string `json:"company_url"`
+	Position    string `json:"position"`
+	Start       string `json:"start"`
+	End         string `json:"end"`
+	Description string `json:"description"`
 }
 
 type ResumeUpdateRequest struct {

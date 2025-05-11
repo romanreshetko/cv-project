@@ -63,8 +63,9 @@ func UpdateResumeHandler(w http.ResponseWriter, r *http.Request) {
 		writeJSONError(w, "Failed to send request", http.StatusInternalServerError)
 		return
 	}
-	if resp.StatusCode != http.StatusOK {
-		writeJSONError(w, "Request error", resp.StatusCode)
+	if resp.StatusCode >= 300 {
+		body, _ := io.ReadAll(resp.Body)
+		writeJSONError(w, string(body), resp.StatusCode)
 		return
 	}
 
